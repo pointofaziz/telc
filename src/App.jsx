@@ -122,7 +122,7 @@ function App() {
                 </button>
                 
                 <div className="document-slider-window">
-                  <div className="document-slider-track" style={{ transform: `translateX(-${currentPage * 380}px)` }}>
+                  <div className="document-slider-track" style={{ transform: `translateX(-${currentPage * 50}%)` }}>
                     {/* PAGE 1 */}
                     <div className="document-mock">
                       {renderCertImage(page1Img, 1)}
