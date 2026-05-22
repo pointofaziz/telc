@@ -1,0 +1,12 @@
+<svg viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <path id="topCurve" d="M 20,50 a 30,30 0 0,1 60,0" fill="none" />
+    <path id="bottomCurve" d="M 80,50 a 30,30 0 0,1 -60,0" fill="none" />
+  </defs>
+  <text font-size="8" fill="#888" letter-spacing="1">
+    <textPath href="#topCurve" startOffset="50%" text-anchor="middle">LANGUAGE CERTIFICATES</textPath>
+  </text>
+  <text font-size="8" fill="#888" letter-spacing="1">
+    <textPath href="#bottomCurve" startOffset="50%" text-anchor="middle">THE EUROPEAN</textPath>
+  </text>
+</svg>
