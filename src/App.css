@@ -89,7 +89,7 @@ img { display: block; max-width: 100%; }
   display: flex;
   align-items: center;
   height: 100%;
-  margin-left: 130px;
+  margin-left: 40px;
 }
 .top-bar__nav-item {
   display: flex;
