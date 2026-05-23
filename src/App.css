@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+/* Host page font: Fira Sans (telc design system).
+   Cert content font: Roboto + Open Sans fallback (the iframe is a Material UI app). */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root {
+  --font-host: 'Fira Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-content: 'Roboto', 'Open Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
 
 :root {
   --telc-red: #a81411;
@@ -13,7 +20,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
-  font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-host);
   color: var(--text-primary);
   background-color: #fff;
   -webkit-font-smoothing: antialiased;
@@ -24,6 +31,17 @@ body {
   font-size: 16px;
   line-height: 1.5;
   overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   Cert content area uses Roboto (Material UI default), matching
+   the real virtualbadge.io iframe that telc embeds in production.
+   ───────────────────────────────────────────────────────────── */
+.main-content,
+.main-content *,
+.preview-container,
+.preview-container * {
+  font-family: var(--font-content);
 }
 
 a { color: inherit; text-decoration: none; }
@@ -78,8 +96,10 @@ img { display: block; max-width: 100%; }
   justify-content: center;
   height: 48px;
   padding: 0 16px;
-  font-size: 16px;
+  font-family: var(--font-host);
+  font-size: 1rem;             /* 16px */
   font-weight: 400;
+  line-height: 1.5;
   color: var(--text-primary);
   background-color: transparent;
   text-decoration: none;
@@ -140,8 +160,8 @@ img { display: block; max-width: 100%; }
   margin-right: 0.65rem;
 }
 .c-header__localeSwitchItem button {
-  font-family: 'Fira Sans', sans-serif;
-  font-size: 16px;
+  font-family: var(--font-host);
+  font-size: 1rem;             /* 16px */
   font-weight: 400;
   color: var(--text-primary);
   background: transparent;
@@ -171,7 +191,9 @@ img { display: block; max-width: 100%; }
   padding: 40px 12px 60px;
 }
 
-/* Content header: title + upload instruction */
+/* Content header: title + upload instruction
+   MUI h5 → 1.5rem (24px) / 400 — letterSpacing 0; rendered larger here
+   matching the real page's content-header */
 .content-header {
   display: flex;
   justify-content: space-between;
@@ -183,19 +205,21 @@ img { display: block; max-width: 100%; }
   flex-wrap: wrap;
 }
 .page-title {
-  font-size: 28px;
+  font-size: 1.75rem;      /* 28px */
   font-weight: 400;
   color: var(--text-primary);
-  letter-spacing: -0.005em;
-  line-height: 1.2;
+  letter-spacing: 0;
+  line-height: 1.235;       /* MUI h5 line-height */
+  font-family: var(--font-content);
 }
 .upload-instruction {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 0.875rem;      /* 14px — MUI body2 */
   font-weight: 400;
+  line-height: 1.43;
 }
 .info-icon {
   color: #b0b0b0;
@@ -324,27 +348,30 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-direction: column;
 }
+/* Detail label/value pairs — MUI body2 + body1 bold pattern */
 .detail-group {
   margin-bottom: 24px;
 }
 .detail-label {
-  font-size: 14px;
+  font-size: 0.875rem;      /* 14px — MUI body2 */
   font-weight: 400;
   color: var(--text-primary);
   margin-bottom: 4px;
+  line-height: 1.43;
 }
 .detail-value {
-  font-size: 16px;
+  font-size: 1rem;          /* 16px — MUI body1 */
   font-weight: 700;
   color: var(--text-primary);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 .detail-link {
   color: var(--link-blue);
-  font-weight: 400;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 1rem;
   text-decoration: none;
   word-break: break-all;
+  line-height: 1.5;
 }
 .detail-link:hover { text-decoration: underline; }
 
@@ -362,13 +389,14 @@ img { display: block; max-width: 100%; }
 }
 .verify-title {
   font-weight: 700;
-  font-size: 16px;
-  color: var(--text-primary);
-}
-.verify-text {
-  font-size: 14px;
+  font-size: 1rem;          /* 16px — MUI body1 bold */
   color: var(--text-primary);
   line-height: 1.5;
+}
+.verify-text {
+  font-size: 0.875rem;      /* 14px — MUI body2 */
+  color: var(--text-primary);
+  line-height: 1.43;
   margin-bottom: 4px;
 }
 .upload-button {
@@ -386,16 +414,18 @@ img { display: block; max-width: 100%; }
 }
 .upload-button:hover { background-color: #909090; }
 
-/* ════════ FOOTER: WEITERE DETAILS ════════ */
+/* ════════ FOOTER: WEITERE DETAILS ════════
+   MUI h5 (1.5rem / 400) for the section title, body2 for paragraphs */
 .details-footer {
   margin-top: 32px;
 }
 .details-title {
-  font-size: 24px;
+  font-size: 1.5rem;        /* 24px — MUI h5 */
   font-weight: 400;
   color: var(--text-primary);
   margin-bottom: 16px;
-  letter-spacing: -0.005em;
+  letter-spacing: 0;
+  line-height: 1.334;
 }
 .details-divider {
   height: 1px;
@@ -404,7 +434,7 @@ img { display: block; max-width: 100%; }
   border: none;
 }
 .details-text {
-  font-size: 14px;
+  font-size: 0.875rem;      /* 14px — MUI body2 */
   color: var(--text-primary);
   margin-bottom: 12px;
   line-height: 1.6;
