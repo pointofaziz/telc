@@ -23,13 +23,28 @@ ul { list-style: none; }
 .nav-link:hover { color: var(--primary-red); }
 .nav-link.active { background-color: var(--primary-red); color: #fff; height: 100%; display: flex; align-items: center; padding: 0 24px; gap: 8px; }
 .nav-link.active:hover { color: #fff; }
-.top-header-right { display: flex; align-items: center; justify-content: flex-end; height: 100%; padding-right: 24px; gap: 16px; width: 200px; }
-.lang-switch { display: flex; gap: 16px; height: 100%; align-items: center; }
-.lang { cursor: pointer; color: var(--text-gray); height: 100%; display: flex; align-items: center; border-bottom: 2px solid transparent; }
-.lang.active { color: var(--primary-red); font-weight: 700; border-bottom: 2px solid var(--primary-red); }
+.top-header-right { width: 200px; }
 
-.logo-header { padding: 24px 0; border-bottom: 1px solid var(--border-color); display: flex; justify-content: center; background-color: #fff; z-index: 99; }
-.logo-header-inner { width: 100%; max-width: 1000px; padding: 0 24px; }
+.logo-header { padding: 12px 0; border-bottom: 1px solid var(--border-color); display: flex; justify-content: center; background-color: #fff; z-index: 99; }
+.logo-header-inner { width: 100%; max-width: 1000px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+
+/* Logo brand (left) */
+.logo-brand { display: inline-flex; flex-direction: column; align-items: flex-start; color: #838b8f; text-decoration: none; }
+.logo-brand-sub { font-size: 11px; letter-spacing: 1.5px; margin-top: 2px; font-family: sans-serif; font-weight: 600; color: #838b8f; }
+
+/* Secondary nav (right of logo bar) */
+.logo-secondary-nav { display: flex; align-items: center; gap: 20px; }
+.logo-nav-link { font-size: 13px; color: var(--text-gray); text-decoration: none; transition: color 0.2s; }
+.logo-nav-link:hover { color: var(--text-dark); }
+
+/* Language picker */
+.logo-lang-picker { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--text-gray); cursor: pointer; transition: color 0.2s; }
+.logo-lang-picker:hover { color: var(--text-dark); }
+
+/* Cart — red square, white icon, overlapping badge */
+.logo-cart { position: relative; display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; background-color: #a81411; color: #fff; text-decoration: none; flex-shrink: 0; transition: background-color 0.2s; }
+.logo-cart:hover { background-color: #8a0f0d; color: #fff; }
+.logo-cart-badge { position: absolute; top: -7px; right: -7px; min-width: 20px; height: 20px; background: #fff; border-radius: 50%; font-size: 11px; font-weight: 700; color: #333; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; padding: 0 3px; }
 
 .main-content { flex: 1; width: 100%; max-width: 1000px; margin: 0 auto; padding: 40px 24px; }
 .content-header { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); margin-bottom: 40px; }
@@ -107,9 +122,12 @@ ul { list-style: none; }
   .top-header-right { width: auto; padding-right: 0; }
   .user-icon-container { padding: 0 16px; }
 
-  /* Logo */
-  .logo-header { padding: 16px 0; }
-  .logo-header-inner { padding: 0 16px; }
+  /* Logo bar */
+  .logo-header { padding: 10px 0; }
+  .logo-header-inner { padding: 0 16px; flex-wrap: wrap; gap: 10px; }
+  .logo-secondary-nav { gap: 12px; }
+  .logo-nav-link { font-size: 12px; }
+  .logo-lang-picker { font-size: 12px; }
 
   /* Main */
   .main-content { padding: 24px 16px; }
