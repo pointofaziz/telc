@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import './App.css';
-
-const PEOPLE_ICON = (
-  <svg className="top-bar__nav-item-icon" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M8 7.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-8 1.5C5.5 9 0 10.3 0 13v2.5h16V13c0-2.7-5.5-4-8-4Zm9 0c-.3 0-.7 0-1 .1.7.9 1 1.9 1 2.9V15h7v-2.5C24 10.3 19.5 9 17 9Z" fill="currentColor"/>
-  </svg>
-);
+import {
+  UserIcon,
+  UsersIcon,
+  InfoCircleIcon,
+  ExternalLinkIcon,
+  FileUploadIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  TimesIcon
+} from './icons.jsx';
 
 function App() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -33,10 +37,7 @@ function App() {
       {/* ═══════════════════════════════ Row 1: Top bar ═══════════════════════════════ */}
       <div className="top-bar">
         <div className="top-bar__auth">
-          <svg className="top-bar__user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-          </svg>
+          <UserIcon size={20} className="top-bar__user-icon" />
           <div className="top-bar__separator" />
         </div>
 
@@ -45,7 +46,7 @@ function App() {
           <a href="https://campus.telc.net/" target="_blank" rel="noopener noreferrer" className="top-bar__nav-item">Campus</a>
           <a href="https://training.telc.net/" target="_blank" rel="noopener noreferrer" className="top-bar__nav-item">Training</a>
           <a href="#" className="top-bar__nav-item is-active">
-            {PEOPLE_ICON}
+            <UsersIcon size={20} className="top-bar__nav-item-icon" />
             <span>Community</span>
           </a>
           <a href="https://shop.telc.net/" target="_blank" rel="noopener noreferrer" className="top-bar__nav-item">Shop</a>
@@ -73,10 +74,7 @@ function App() {
         <div className="preview-container">
           <div className="preview-content-wrapper">
             <button className="preview-close-btn" onClick={togglePreview} aria-label="Vorschau schließen">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-              </svg>
+              <TimesIcon size={18} />
             </button>
             <div className="preview-document-mock">{renderCertImage(page1Img, 1)}</div>
             <div className="preview-document-mock">{renderCertImage(page2Img, 2)}</div>
@@ -90,7 +88,7 @@ function App() {
             <h1 className="page-title">telc Deutsch B1 Zertifikat</h1>
             <div className="upload-instruction">
               <span>Laden Sie die PDF-Datei zur Validierung dieses Zertifikats hoch</span>
-              <span className="info-icon" aria-hidden="true">i</span>
+              <InfoCircleIcon size={22} className="info-icon" />
             </div>
           </div>
 
@@ -105,9 +103,7 @@ function App() {
                   onClick={prevPage}
                   aria-label="Vorherige Seite"
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M15 18l-6-6 6-6"/>
-                  </svg>
+                  <ChevronLeftIcon size={12} />
                 </button>
 
                 <div className="document-slider-window">
@@ -124,11 +120,7 @@ function App() {
                     onClick={togglePreview}
                     aria-label="Vollbild anzeigen"
                   >
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                      <polyline points="15 3 21 3 21 9"/>
-                      <line x1="10" y1="14" x2="21" y2="3"/>
-                    </svg>
+                    <ExternalLinkIcon size={16} />
                   </button>
                 </div>
 
@@ -137,9 +129,7 @@ function App() {
                   onClick={nextPage}
                   aria-label="Nächste Seite"
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M9 18l6-6-6-6"/>
-                  </svg>
+                  <ChevronRightIcon size={12} />
                 </button>
               </div>
 
@@ -192,12 +182,7 @@ function App() {
                   Laden Sie die PDF-Version dieses Zertifikats hoch, um seine Echtheit zu überprüfen.
                 </div>
                 <button className="upload-button" aria-label="PDF hochladen">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="12" y1="18" x2="12" y2="12"/>
-                    <polyline points="9 15 12 12 15 15"/>
-                  </svg>
+                  <FileUploadIcon size={22} />
                 </button>
               </div>
             </div>
