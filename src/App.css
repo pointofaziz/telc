@@ -111,6 +111,8 @@ img { display: block; max-width: 100%; }
   background-color: var(--telc-red);
   color: #fff;
   gap: 8px;
+  font-size: 1rem;             /* 16px — active item is larger */
+  font-weight: 700;
 }
 .top-bar__nav-item.is-active:hover { color: #fff; }
 .top-bar__nav-item-icon {
