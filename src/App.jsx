@@ -4,6 +4,7 @@ import './App.css';
 function App() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isPreviewMode, setIsPreviewMode] = useState(false);
+  const [locale, setLocale] = useState('DE');
 
   const page1Img = "/cert-page-1.png";
   const page2Img = "/cert-page-2.png";
@@ -27,27 +28,29 @@ function App() {
     if (imgSrc) {
       return <img src={imgSrc} alt={`Certificate Page ${pageNum}`} className="cert-image" />;
     }
-    return <div className="placeholder-cert">Photoshop Image {pageNum} Goes Here</div>;
+    return <div className="placeholder-cert">Certificate Image {pageNum}</div>;
   };
 
   return (
     <div className="app-container">
-      {/* Top Header */}
+      {/* ── Row 1: Top Header ── */}
       <header className="top-header">
         <div className="top-header-left">
           <div className="user-icon-container">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            {/* Person icon */}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
           </div>
         </div>
 
-        <div className="top-nav">
-          <a href="https://sso.ow.telc.net/auth/realms/onlinewelt/protocol/openid-connect/auth?client_id=moodle&response_type=code&redirect_uri=https%3A%2F%2Fcampus.telc.net%2Fadmin%2Foauth2callback.php&state=%2Fauth%2Foauth2%2Flogin.php%3Fwantsurl%3Dhttps%253A%252F%252Fcampus.telc.net%252Fmy%26sesskey%3D4R7S2tTA9t%26id%3D1&scope=openid%20profile%20email" target="_blank" rel="noopener noreferrer" className="nav-link">telc.net</a>
-          <a href="https://sso.ow.telc.net/auth/realms/onlinewelt/protocol/openid-connect/auth?client_id=moodle&response_type=code&redirect_uri=https%3A%2F%2Fcampus.telc.net%2Fadmin%2Foauth2callback.php&state=%2Fauth%2Foauth2%2Flogin.php%3Fwantsurl%3Dhttps%253A%252F%252Fcampus.telc.net%252Fmy%26sesskey%3D4R7S2tTA9t%26id%3D1&scope=openid%20profile%20email" target="_blank" rel="noopener noreferrer" className="nav-link">Campus</a>
+        <nav className="top-nav">
+          <a href="https://www.telc.net/" target="_blank" rel="noopener noreferrer" className="nav-link">telc.net</a>
+          <a href="https://campus.telc.net/" target="_blank" rel="noopener noreferrer" className="nav-link">Campus</a>
           <a href="https://training.telc.net/" target="_blank" rel="noopener noreferrer" className="nav-link">Training</a>
           <a href="#" className="nav-link active">
+            {/* People/community icon */}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
               <circle cx="9" cy="7" r="4"></circle>
@@ -57,79 +60,66 @@ function App() {
             Community
           </a>
           <a href="https://shop.telc.net/" target="_blank" rel="noopener noreferrer" className="nav-link">Shop</a>
-        </div>
+        </nav>
 
         <div className="top-header-right"></div>
       </header>
 
-      {/* Logo Header */}
+      {/* ── Row 2: Logo Header ── */}
       <div className="logo-header">
         <div className="logo-header-inner">
 
-          {/* Brand / Logo — left */}
+          {/* telc brand logo — left */}
           <a href="https://results.telc.net/" target="_blank" rel="noopener noreferrer" className="logo-brand">
-            <svg viewBox="155.531 164.202 85.997 35.154" width="100" height="40" style={{ fill: '#838b8f' }}>
+            <svg viewBox="155.531 164.202 85.997 35.154" width="110" height="44" style={{ fill: '#838b8f' }}>
               <path d="M164.268 190.633c0 5.322 3.033 8.716 8.516 8.716a18.14 18.14 0 005.162-.623l-.2-5.543a6.315 6.315 0 01-3.193.723c-2.671 0-3.294-2.15-3.294-4.44v-25.264l-6.991 2.249zm23.358-7.993c.32-3.6 2.29-6.326 6.206-6.326s5.483 2.932 5.684 6.326zm16.61 8.877a18.128 18.128 0 01-8.937 2.71c-4.338 0-7.371-2.45-7.672-6.787h18.6c0-9.4-2.812-16.248-12.794-16.248-8.355 0-12.472 6.427-12.472 14.2 0 8.817 5.162 13.938 14.039 13.938a18.279 18.279 0 009.239-2.15v-5.664zm5.8-25.125h6.989v32.335h-6.985zm31.03 5.7a22.543 22.543 0 00-6.788-.884c-8.415 0-12.994 6.166-12.994 13.938 0 8.194 4.439 14.2 13.255 14.2a22.854 22.854 0 006.989-.884l-.321-5.8a14.863 14.863 0 01-5.38 1.24c-4.9 0-7.25-3.816-7.25-8.777 0-5.061 2.773-8.516 7.11-8.516a10.789 10.789 0 014.76.984l.624-5.5zm-68.398 4.562l7.47-.02v-4.56l-7.47.04z" fillRule="evenodd" />
               <circle cx="3.695" cy="3.695" r="3.695" transform="translate(155.53 170.569)" />
             </svg>
-            <span className="logo-brand-sub">LANGUAGE TESTS</span>
+            <span className="logo-brand-sub">Language Tests</span>
           </a>
 
-          {/* Secondary nav — right (matches training.telc.net logo bar) */}
-          <div className="logo-secondary-nav">
-            <a href="#" className="logo-nav-link">Home</a>
-            <a href="#" className="logo-nav-link">Anmelden</a>
-
-            {/* Language picker */}
-            <div className="logo-lang-picker">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-              </svg>
-              <span>Deutsch</span>
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </div>
-
-            {/* Cart — red square with badge (matches training.telc.net) */}
-            <a href="#" className="logo-cart">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
-              <span className="logo-cart-badge">0</span>
-            </a>
+          {/* Locale switch — right: DE | EN */}
+          <div className="locale-switch">
+            <button
+              className={`locale-btn${locale === 'DE' ? ' active' : ''}`}
+              onClick={() => setLocale('DE')}
+            >
+              DE
+            </button>
+            <span className="locale-sep">|</span>
+            <button
+              className={`locale-btn${locale === 'EN' ? ' active' : ''}`}
+              onClick={() => setLocale('EN')}
+            >
+              EN
+            </button>
           </div>
-
         </div>
       </div>
 
-      {/* Preview Mode View */}
+      {/* ── Preview Mode View ── */}
       {isPreviewMode ? (
         <div className="preview-container">
           <div className="preview-content-wrapper">
-            <button className="preview-close-btn" onClick={togglePreview}>
+            <button className="preview-close-btn" onClick={togglePreview} aria-label="Close preview">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
             </button>
-            
             <div className="preview-document-mock">
               {renderCertImage(page1Img, 1)}
             </div>
-            
             <div className="preview-document-mock">
               {renderCertImage(page2Img, 2)}
             </div>
           </div>
         </div>
       ) : (
-        /* Normal Main Content */
+        /* ── Normal Main Content ── */
         <main className="main-content">
+
+          {/* Content header */}
           <div className="content-header">
             <h1 className="page-title">telc Deutsch B1 Zertifikat</h1>
             <div className="upload-instruction">
@@ -138,51 +128,87 @@ function App() {
             </div>
           </div>
 
+          {/* Two-column body */}
           <div className="content-body">
-            {/* Left Column - Document Viewer Slider */}
+
+            {/* Left Column — Document slider */}
             <div className="left-column">
               <div className="document-viewer-container">
-                <button className="nav-arrow" onClick={prevPage} style={{ visibility: currentPage > 0 ? 'visible' : 'hidden' }}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+
+                {/* Left arrow */}
+                <button
+                  className={`nav-arrow${currentPage === 0 ? ' disabled' : ''}`}
+                  onClick={prevPage}
+                  style={{ visibility: currentPage > 0 ? 'visible' : 'hidden' }}
+                  aria-label="Previous page"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M15 18l-6-6 6-6"/>
                   </svg>
                 </button>
-                
+
+                {/* Slider */}
                 <div className="document-slider-window">
-                  <div className="document-slider-track" style={{ transform: `translateX(-${currentPage * 50}%)` }}>
-                    {/* PAGE 1 */}
+                  <div
+                    className="document-slider-track"
+                    style={{ transform: `translateX(-${currentPage * 50}%)` }}
+                  >
                     <div className="document-mock">
                       {renderCertImage(page1Img, 1)}
                     </div>
-                    {/* PAGE 2 */}
                     <div className="document-mock">
                       {renderCertImage(page2Img, 2)}
                     </div>
                   </div>
                 </div>
 
-                <div className="open-new-window" onClick={togglePreview} title="Open in new window">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {/* Open in new window — bottom-left */}
+                <div
+                  className="open-new-window"
+                  onClick={togglePreview}
+                  title="Vollbild anzeigen"
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && togglePreview()}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                     <polyline points="15 3 21 3 21 9"></polyline>
                     <line x1="10" y1="14" x2="21" y2="3"></line>
                   </svg>
                 </div>
 
-                <button className="nav-arrow" onClick={nextPage} style={{ visibility: currentPage < 1 ? 'visible' : 'hidden' }}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                {/* Right arrow */}
+                <button
+                  className={`nav-arrow${currentPage === 1 ? ' disabled' : ''}`}
+                  onClick={nextPage}
+                  style={{ visibility: currentPage < 1 ? 'visible' : 'hidden' }}
+                  aria-label="Next page"
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M9 18l6-6-6-6"/>
                   </svg>
                 </button>
               </div>
 
+              {/* Pagination dots */}
               <div className="pagination-dots">
-                <div className={`dot ${currentPage === 0 ? 'active' : ''}`} onClick={() => setCurrentPage(0)}></div>
-                <div className={`dot ${currentPage === 1 ? 'active' : ''}`} onClick={() => setCurrentPage(1)}></div>
+                <div
+                  className={`dot${currentPage === 0 ? ' active' : ''}`}
+                  onClick={() => setCurrentPage(0)}
+                  role="button"
+                  aria-label="Page 1"
+                ></div>
+                <div
+                  className={`dot${currentPage === 1 ? ' active' : ''}`}
+                  onClick={() => setCurrentPage(1)}
+                  role="button"
+                  aria-label="Page 2"
+                ></div>
               </div>
             </div>
 
-            {/* Right Column - Details */}
+            {/* Right Column — Certificate details */}
             <div className="right-column">
               <div className="detail-group">
                 <div className="detail-label">Ausgestellt für:</div>
@@ -201,7 +227,9 @@ function App() {
 
               <div className="detail-group">
                 <div className="detail-label">Link zur Webseite:</div>
-                <a href="https://www.telc.net/" className="detail-link">https://www.telc.net/</a>
+                <a href="https://www.telc.net/" target="_blank" rel="noopener noreferrer" className="detail-link">
+                  https://www.telc.net/
+                </a>
               </div>
 
               <div className="detail-group">
@@ -209,13 +237,14 @@ function App() {
                 <div className="detail-value">telc-R70XcGp</div>
               </div>
 
+              {/* PDF verify box */}
               <div className="verify-box">
                 <div className="verify-title">PDF-Zertifikat überprüfen</div>
                 <div className="verify-text">
                   Laden Sie die PDF-Version dieses Zertifikats hoch, um seine Echtheit zu überprüfen.
                 </div>
-                <button className="upload-button">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <button className="upload-button" aria-label="PDF hochladen">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <polyline points="14 2 14 8 20 8"></polyline>
                     <line x1="12" y1="18" x2="12" y2="12"></line>
@@ -226,15 +255,15 @@ function App() {
             </div>
           </div>
 
-          {/* Footer */}
+          {/* Weitere Details footer */}
           <div className="details-footer">
             <h2 className="details-title">Weitere Details</h2>
             <hr className="details-divider" />
             <p className="details-text">
-              Weitere Informationen zur Prüfung finden Sie auf der <em className="italic">telc Deutsch B1 Zertifikat Seite</em>.
+              Weitere Informationen zur Prüfung finden Sie auf der <em>telc Deutsch B1 Zertifikat Seite</em>.
             </p>
             <p className="details-text">
-              For more information about the examination, please visit the <em className="italic">telc Deutsch B1 page</em>.
+              For more information about the examination, please visit the <em>telc Deutsch B1</em> page.
             </p>
           </div>
         </main>
